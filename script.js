@@ -26,6 +26,17 @@ function addTodo(){
     </div>
 ;
 
+todoList.prepend(li); // add new task at the top
+
+saveTodos(){
+    todoInput.value = "";
+    todoInput.focus();
+    addEventListener(li);          // save functionality
+    updateSerialNumbers();
+}
+
+
+
 
 }
 
