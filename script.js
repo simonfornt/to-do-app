@@ -74,6 +74,34 @@ function editTodo(li){
     deleteButton.addEventListener('click',() => deleteTodo(li));
  }
 
+ function saveTodos(){
+    const todos = [];
+    document.querySelectorAll('#todoList li').forEach((li) => {
+        const taskText = li.querySelector('.task-text').textContent;   
+        const date = li.querySelector('.text-sm').textContent;
+        todos.unshift({taskText, date});
+    });
+    localStorage.setItem('todos', JSON.stringify(todos));
+ }
+ function loadTodos() {
+    const savedTodos = JSON.parse(localStorage.getItem('todos')) || [];
+    savedTodos.forEach(({ taskText, date }) => {
+        const li = document.createElement('li');
+        li.className = 'flex items-center justify-between p-2 border rounded';
+        li.innerHTML = 
+            <span class="serial font-bold"></span> 
+            <span class="flex-grow task-text">${taskText}</span>
+            <span class="text-sm text-gray-500">${date}</span>
+            <div class="flex space-x-2">
+                <button class="editButton bg-yellow-300 hover:bg-yellow-400 p-1 rounded">Edit</button>
+                <button class="deleteButton bg-red-500 hover:bg-red-700 text-white p-1 rounded">Delete</button>
+            </div>
+        ;
+        todoList.appendChild(li);
+        addEventListener(li);
+    })
+    updateSerialNumbers()
 
 }
 
+}
