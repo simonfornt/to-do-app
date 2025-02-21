@@ -35,6 +35,31 @@ saveTodos(){
     updateSerialNumbers();
 }
 
+function editTodo(li){
+    const taskText = li.querySelector(".task-text");
+    const originalText = taskText.textContent;
+
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.value = originalText;
+    input.className = 'flex-grow border p-1 rounded';
+    
+    taskText.replaceWith(input);
+    input.focus();
+
+
+    input.addEventListener('blur', () =>{
+        if(input.value.trim() ===""){
+            alert('Can not be empty');            // add edit button
+            input.focus();
+        }else{
+            taskText.textContent = input.value.trim();
+            input.replaceWith(taskText);
+            saveTodos();
+        }
+    });
+
+}
 
 
 
