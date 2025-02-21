@@ -101,7 +101,11 @@ function editTodo(li){
         addEventListener(li);
     })
     updateSerialNumbers()
-
 }
+ function updateSerialNumbers(){
+    document.querySelectorAll('#todList li').forEach((li, index) => {
+        li.querySelector('.serial').textContent = ${index + 1}. ;
+    });
+ }
 
 }
