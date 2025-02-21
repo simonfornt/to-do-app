@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', loadTodos);
 function addTodo() {
     const task = todoInput.value.trim();
     if (task === '') {
-        alert('Please enter a task!');
+        alert('Please enter your todo');
         return;
     }
 
@@ -19,17 +19,17 @@ function addTodo() {
     li.innerHTML = `
         <span class="serial font-bold"></span> 
         <span class="flex-grow task-text">${task}</span>
-        <span class="text-sm text-gray-500">${date}</span>
+        <span class="text-sm m-1 text-gray-500">${date}</span>
         <div class="flex space-x-2">
             <button class="editButton bg-yellow-300 hover:bg-yellow-400 p-1 rounded">Edit</button>
             <button class="deleteButton bg-red-500 hover:bg-red-700 text-white p-1 rounded">Delete</button>
         </div>
     `;
 
-    // Add new task at the top
+                             // use prepend to added task at the top
     todoList.prepend(li);
 
-    saveTodos(); // Save updated list to localStorage
+    saveTodos();                          // Save updated list to localStorage
     todoInput.value = '';
     todoInput.focus();
     addEventListeners(li);
@@ -40,7 +40,7 @@ function editTodo(li) {
     const taskText = li.querySelector('.task-text');
     const originalText = taskText.textContent;
     
-    const input = document.createElement('input');
+    const input = document.createElement('input');        // create edit button
     input.type = 'text';
     input.value = originalText;
     input.className = 'flex-grow border p-1 rounded';
@@ -75,7 +75,7 @@ function editTodo(li) {
 
 function deleteTodo(li) {
     li.remove();
-    saveTodos(); // Save updated list after deleting an item
+    saveTodos(); 
     updateSerialNumbers(); // Update serial numbers
 }
 
@@ -107,7 +107,7 @@ function loadTodos() {
             <span class="flex-grow task-text">${taskText}</span>
             <span class="text-sm text-gray-500">${date}</span>
             <div class="flex space-x-2">
-                <button class="editButton bg-yellow-300 hover:bg-yellow-400 p-1 rounded">Edit</button>
+                <button class="editButton bg-yellow-300 hover:bg-yellow-400 p-2 m-2 rounded">Edit</button>
                 <button class="deleteButton bg-red-500 hover:bg-red-700 text-white p-1 rounded">Delete</button>
             </div>
         `;
