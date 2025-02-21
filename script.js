@@ -66,6 +66,13 @@ function editTodo(li){
     updateSerialNumbers();
  }
 
+ function addEventListener(li){
+    const editButton = li.querySelector('.editButton');
+    const deleteButton = li.querySelector('.deleteButton');
+
+    editButton.addEventListener('click',() => editTodo(li));
+    deleteButton.addEventListener('click',() => deleteTodo(li));
+ }
 
 
 }
