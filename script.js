@@ -58,8 +58,13 @@ function editTodo(li){
             saveTodos();
         }
     });
-
 }
+
+ function deleteTodo(li){
+    li.remove();                   // create delete btn
+    saveTodos();
+    updateSerialNumbers();
+ }
 
 
 
